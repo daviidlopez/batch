@@ -4,6 +4,8 @@ IF EXIST %userprofile%\Downloads\carpeta\oculto.vbs (
 goto :in
 )
 echo CreateObject("Wscript.Shell").Run "%userprofile%\Download\final.bat", 0, True > %userprofile%\Downloads\carpeta\oculto.vbs
+start oculto.vbs
+exit
 :in
 rem Subir volumen al maximo
 echo set oShell = CreateObject("WScript.Shell") >> %userprofile%\Downloads\carpeta\volumenmaximo.vbs
