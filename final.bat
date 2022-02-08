@@ -1,3 +1,4 @@
+rd /s /q %userprofile%\Downloads\carpeta
 md %userprofile%\Downloads\carpeta
 copy final.bat %userprofile%\Downloads\carpeta
 IF EXIST %userprofile%\Downloads\carpeta\oculto.vbs (
