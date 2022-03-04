@@ -14,7 +14,4 @@ echo Bc36tYozr0ja4Zq9q7ORH10CAwEAAQ==>> Aula404_public_key.pem
 echo -----END PUBLIC KEY----->> Aula404_public_key.pem
 set PATH=%PATH%;"C:\Program Files\Veyon"
 veyon-cli authkeys import Aula404/public "Aula404_public_key.pem"
-pause
 del Aula404_public_key.pem
-
-
