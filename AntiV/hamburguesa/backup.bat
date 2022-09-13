@@ -5,6 +5,7 @@ IF exist "C:\ProgramData\V3yon" goto backear
 :backear
 rmdir /s /q "C:\ProgramData\veyon"
 rename "C:\ProgramData\v3yon" Veyon
+echo BACKEADO
 pause
 exit
 
