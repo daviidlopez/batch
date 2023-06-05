@@ -1,8 +1,10 @@
 @echo off
+set NUM_AULA=Aula304
+set NUM_FAKE_AULA=23
 set path=%path%;"C:\Program Files\Veyon"
 :in
 cls
-IF not exist "C:\ProgramData\V3yon\keys\public\Aula205\key" (
+IF not exist "C:\ProgramData\V3yon\keys\public\%NUM_AULA%\key" (
     echo Hace falta el backup
     pause>nul
     exit
@@ -11,7 +13,7 @@ IF not exist "C:\ProgramData\V3yon\keys\public\Aula205\key" (
 
 IF not exist "%temp%\reading" goto :private
 IF not exist "%temp%\listening" goto :public
-IF exist "C:\ProgramData\Veyon\keys\private\23\key" (
+IF exist "C:\ProgramData\Veyon\keys\private\%NUM_FAKE_AULA%\key" (
     goto delete
 ) else (
     goto import
@@ -92,18 +94,18 @@ echo -----END PUBLIC KEY----->> %temp%\listening
 goto in
 
 :import
-veyon-cli authkeys import 23/private %temp%\reading
-veyon-cli authkeys import 23/public %temp%\listening
-veyon-cli authkeys setaccessgroup 23/public Administradores
-veyon-cli authkeys setaccessgroup 23/private Administradores
+veyon-cli authkeys import %NUM_FAKE_AULA%/private %temp%\reading
+veyon-cli authkeys import %NUM_FAKE_AULA%/public %temp%\listening
+veyon-cli authkeys setaccessgroup %NUM_FAKE_AULA%/public Administradores
+veyon-cli authkeys setaccessgroup %NUM_FAKE_AULA%/private Administradores
 echo.
 echo IMPORTADOS
 pause > nul
 exit
 
 :delete
-veyon-cli authkeys delete 23/public
-veyon-cli authkeys delete 23/private
+veyon-cli authkeys delete %NUM_FAKE_AULA%/public
+veyon-cli authkeys delete %NUM_FAKE_AULA%/private
 echo.
 echo ELIMINADOS
 pause > nul
