@@ -1,14 +1,15 @@
 @echo off
+set NUM_AULA=Aula304
 set path=%path%;"C:\Program Files\Veyon"
 :in
 cls
-IF not exist "C:\ProgramData\V3yon\keys\public\Aula205\key" (
+IF not exist "C:\ProgramData\V3yon\keys\public\%NUM_AULA%\key" (
     echo Hace falta el backup
     pause>nul
     exit
 )
 
-IF exist "C:\ProgramData\Veyon\keys\public\Aula205\key" (
+IF exist "C:\ProgramData\Veyon\keys\public\%NUM_AULA%\key" (
     goto delete
 ) else (
     goto import
@@ -16,18 +17,15 @@ IF exist "C:\ProgramData\Veyon\keys\public\Aula205\key" (
 
 
 :import
-veyon-cli authkeys import Aula205/public "C:\ProgramData\V3yon\keys\public\Aula205\key"
-veyon-cli authkeys import Aula107/public "C:\ProgramData\V3yon\keys\public\Aula107\key"
-veyon-cli authkeys setaccessgroup Aula205/public Administradores
-veyon-cli authkeys setaccessgroup Aula107/public Administradores
+veyon-cli authkeys import %NUM_AULA%/public "C:\ProgramData\V3yon\keys\public\%NUM_AULA%\key"
+veyon-cli authkeys setaccessgroup %NUM_AULA%/public Administradores
 echo.
 echo IMPORTADOS
 pause > nul
 exit
 
 :delete
-veyon-cli authkeys delete Aula205/public
-veyon-cli authkeys delete Aula107/public
+veyon-cli authkeys delete %NUM_AULA%/public
 echo.
 echo ELIMINADOS
 pause > nul
